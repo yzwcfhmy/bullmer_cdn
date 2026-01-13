@@ -1,0 +1,41 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.V2{
+    padding: 20px;
+    height: 100%;
+}
+.banner{
+    height: 40%;
+    text-align: center;
+}
+.banner img{
+    height: 90%;
+    object-fit: contain;
+}
+.tag{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.tag-name{
+    margin-right: 10px;
+}
+.table-header{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.el-table .warning-row {
+    background: oldlace;
+}
+
+.el-table .success-row {
+    background: #f0f9eb;
+}
+.has-gutter{
+    text-align: center !important;
+}

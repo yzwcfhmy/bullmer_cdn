@@ -1,0 +1,215 @@
+@charset "utf-8";
+/* CSS Document */
+*{
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box}
+body{padding:0px;	margin:0px;color: #faffff;font-family: "微软雅黑";
+}
+body{color:#666;font-size: 16px;}
+li{ list-style-type:none;}
+table{}
+i{ margin:0px; padding:0px; text-indent:0px;}
+img{ border:none; max-width: 100%;}
+a{ text-decoration:none; color:#399bff;}
+a.active,a:focus{ outline:none!important; text-decoration:none;}
+ol,ul,p,h1,h2,h3,h4,h5,h6{ padding:0; margin:0}
+a:hover{ color:#06c; text-decoration: none!important}
+
+.viewport {
+	width: 100%;
+	height: 100%;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	-moz-background-size: 100% 100%;
+}
+.clearfix:after, .clearfix:before {
+	display: table;
+	content: " "
+}
+ .clearfix:after {
+	clear: both
+}
+.pulll_left{float:left;}
+.pulll_right{float:right;}
+
+
+.loading{position:fixed; left:0; top:0; font-size:16px; z-index:100000000;width:100%; height:100%; background:#1a1a1c; text-align:center;}
+.loadbox{position:absolute; width:160px;height:150px; color:rgba(255,255,255,.6); left:50%; top:50%; margin-top:-100px; margin-left:-75px;}
+.loadbox img{ margin:10px auto; display:block; width:40px;}
+ 
+.head{ height:105px; background: url(../images/head_bg.png) no-repeat center center; position: relative}
+.head h1{ color:#fff; text-align: center; font-size:30px; line-height:70px;margin-top: -3.5%;}
+.head h1 img{ width:1.5rem; display: inline-block; vertical-align: middle; margin-right: .2rem}
+
+.chooseTime{
+	display: flex;
+	flex-flow: column nowrap;
+}
+.weather {
+	right: 30px;
+	top: 0;
+	line-height: 40px;
+	display: flex;
+	flex-flow: row nowrap; /* nowrap 防止元素换行 */
+	justify-content: flex-end; /* 从起始位置开始排列 */
+	align-items: center; /* 垂直居中对齐 */
+	gap: 7px; /* 设置元素之间的间距为10px */
+	color: white;
+}
+
+.weather #dateStart,
+/*.weather #timeStart,*/
+.weather #dateEnd,
+/*.weather #timeEnd,*/
+.weather #submit,
+.weather #dayCount {
+	color: rgba(0, 47, 94, 1) !important;
+}
+
+.weather #submit {
+	line-height: 70px !important; /* 保持与其它元素相同的行高 */
+}
+
+#devices{
+	transition: background-color 0.5s ease;
+	border: 1px solid #caccc5;
+	border-radius: 5px;position:absolute; left:90px; top:0; margin-top: 10px;width: 230px;height: 800px;height: 50px;text-align: center;font-size: 26px;color: white;background-color: rgba(0, 47, 94,1)}
+
+#goBack {
+	position:absolute;
+	left:25px;
+	top:0;
+	margin-top: 10px;
+	width: 50px;
+	height: 50px;
+	text-align: center;
+	font-size: 26px;
+	color: white;
+	background-color: rgba(0, 47, 94,1);
+	border: 1px solid #caccc5;
+	border-radius: 5px;
+	transition: background-color 0.5s ease;
+}
+
+#devices:hover,
+.deviceBox:hover,
+#goBack:hover {
+	background-color: rgba(0, 90, 195, 0.8);
+	cursor: pointer;
+}
+
+.deviceBox{font-size:  26px; text-align: center;color: white;
+	transition: background-color 0.5s ease;}
+
+.mainbox{ padding:10px 20px 0px 20px;}
+.mainbox>ul{ margin-left:-.4rem; margin-right:-.4rem;}
+.mainbox>ul>li{ float: left; padding: 0 .4rem}
+.mainbox>ul>li{ width: 24%}
+.mainbox>ul>li:nth-child(2){ width: 52%}
+
+.boxall{ padding:15px;  background: rgba(0,0,0,.2); position: relative; margin-bottom:15px;; z-index: 10;}
+.alltitle{ font-size:14px; color:#fff; position: relative; padding-left: 12px;margin-bottom: 10px;}
+.alltitle:before{ width: 5px; height: 20px; top:2px; position: absolute; content: ""; background: #49bcf7; border-radius:20px; left: 0; }
+
+.navboxall{height: calc(100% - 30px);}
+/*Plugin CSS*/
+.wrap{ height:82%; overflow: hidden;}
+.wrap li{  line-height:40px; height:40px; }
+.wrap li p,.wraptit{ font-size: 0; display: flex; }
+.wrap li span,.wraptit span{ display: inline-block; font-size: 13px;color: rgba(255,255,255,.6); text-align: center;flex: 1; /* 每列等宽 */
+	padding: 0 5px; /* 增加内边距 */}
+.wraptit { border-bottom: 1px dotted rgba(255,255,255,.15); padding:0 0 10px 0; margin-bottom: 10px;}
+.wraptit span{font-size: 16px;color: rgba(255,255,255,.8); }
+.wrap li span:nth-child(1),.wraptit span:nth-child(1){ width: 80%}
+.wrap li span:nth-child(2),.wraptit span:nth-child(2){ width: 0%}
+.wrap li span:nth-child(3),.wraptit span:nth-child(3){ width: 0%}
+.wrap li span:nth-child(4),.wraptit span:nth-child(4){ width: 20%}
+.wrap ul li p span:nth-child(2):hover {
+	cursor: default; /* 鼠标放上时显示默认光标（可选） */
+	/* 也可以使用更复杂的自定义tooltip样式 */
+}
+.str_wrap {
+	overflow:hidden;
+	width:100%;
+	position:relative;
+	-moz-user-select: none;
+	-khtml-user-select: none;
+	user-select: none;  
+	white-space:nowrap;
+}
+
+
+.str_move { 
+	white-space:nowrap;
+	position:absolute; 
+	top:0; 
+	left:0;
+	cursor:move;
+}
+.str_move_clone {
+	display:inline-block;
+	vertical-align:top;
+	position:absolute; 
+	left:100%;
+	top:0;
+}
+.str_vertical .str_move_clone {
+	left:0;
+	top:100%;
+}
+.str_down .str_move_clone {
+	left:0;
+	bottom:100%;
+}
+.str_vertical .str_move,
+.str_down .str_move {
+	white-space:normal;
+	width:100%;
+}
+.str_static .str_move,
+.no_drag .str_move,
+.noStop .str_move{
+	cursor:inherit;
+}
+.str_wrap img {
+	max-width:none !important;	
+}
+
+
+.sycm ul{ margin-left:-.5rem;margin-right:-.5rem;  padding: .16rem 0;}
+.sycm li{ float: left; width:50%; text-align: center; position: relative}
+.sycm li:before{ position:absolute; content: ""; height:80%; width: 1px; background: rgba(255,255,255,.1); right: 0; top: 15%;}
+.sycm li:last-child:before{ width: 0;}
+
+.sycm li h2{ font-size:46px; padding-top: 10px; color: #c7cd4f; font-weight: 700; font-family: Gotham, "Helvetica Neue", Helvetica, Arial, "sans-serif";}
+.sycm li span{ font-size:20px; color: #fff; opacity: .5;}
+
+
+.jindu li{ width: 50%; float: left; height: 170px;;}
+.jindu li:nth-child(odd),.jindu div:nth-child(odd){border-right:1px dotted rgba(255,255,255,.1);}
+.jindu div{ width: 50%; float: left; color: #fff; text-align: center; border-top: 1px dotted rgba(255,255,255,.15); padding: 20px 0 0 0; margin: 20px 0 0 0; font-size: 18px;}
+
+.export-btn {
+	background-color: #002F5E; /* 蓝底色号 */
+	border: 1px solid #fff; /* 白边 */
+	color: #fff; /* 白字 */
+	padding: 8px 16px;
+	border-radius: 4px;
+	cursor: pointer;
+	font-size: 14px;
+	transition: all 0.3s;
+	margin-left: 10px; /* 与左侧按钮间距 */
+}
+
+.export-btn:hover {
+	background-color: #004080; /* 悬停时稍深的蓝色 */
+	box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+.export-btn p {
+	margin: 0;
+	color: inherit;
+}
+
+

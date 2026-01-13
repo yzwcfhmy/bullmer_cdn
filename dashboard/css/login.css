@@ -1,0 +1,125 @@
+*, *:after, *:before { -webkit-box-sizing: border-box; box-sizing: border-box; }
+.clearfix:before, .clearfix:after { content: ''; display: table; }
+.clearfix:after { clear: both; }
+
+body {
+	background: #fff;
+	color: #383a3c;
+	font-weight: 400;
+	line-height: 1.25;
+	font-family: 'Raleway', Calibri, Arial, sans-serif;
+}
+.btn-sm {
+	font-size: 20px !important;
+	color: #a5cae4;
+	text-decoration: none;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+a, button {
+	outline: none;
+}
+
+a:hover, a:focus {
+	color: #6890b6;
+}
+
+section {
+	padding: 1em;
+	text-align: center;
+}
+
+p.ref {
+	text-align: center;
+	padding: 2em 1em;
+}
+
+#companyname{
+	width: 800px;
+	height: 30px;
+
+	color: white;
+	/*font-weight: 600;*/
+
+	position: absolute;
+	left: 39%;
+	top:90%;
+}
+
+#BottomCompanyMessage {
+	font-size: 20px;
+}
+
+#bullmer-header-text{
+	color: white;
+	font-weight: 600;
+	font-size: 60px;
+	/*position: absolute;*/
+	/*top:8%;*/
+	/*left:1.1%;*/
+	/*text-align: center;*/
+}
+#bullmer-header{
+display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 8rem;
+
+}
+input:-webkit-autofill , textarea:-webkit-autofill, select:-webkit-autofill {
+	-webkit-text-fill-color: #ededed !important;
+	-webkit-box-shadow: 0 0 0px 1000px transparent  inset !important;
+	background-color:transparent;
+	background-image: none;
+	transition: background-color 50000s ease-in-out 0s;
+}
+input {
+	background-color:transparent;
+}
+/* 媒体查询：针对不同屏幕尺寸调整样式[1,6](@ref) */
+/* 平板设备（屏幕宽度小于992px） */
+@media (max-width: 992px) {
+	html {
+		font-size: 14px; /* 调小基准字体 */
+	}
+	#bullmer-header-text {
+		font-size: 5vw; /* 增大视口单位比例 */
+	}
+	.logo_box {
+		width: 85%;
+		padding: 1.5rem;
+	}
+}
+/* 手机设备（屏幕宽度小于768px） */
+@media (max-width: 768px) {
+	html {
+		font-size: 12px;
+	}
+	#bullmer-header-text {
+		left: 5%; /* 增加左边距，提供更多空间 */
+		right: 5%; /* 增加右边距约束 */
+		text-align: center; /* 居中对齐 */
+		font-size: 6vw;
+	}
+	.logo_box {
+		width: 95%;
+		padding: 1rem;
+	}
+	.mb2 .btn-sm {
+		display: block; /* 小屏幕上语言按钮垂直堆叠 */
+		margin: 0.5rem 0;
+	}
+}
+@media (max-width: 992px) and (min-width: 769px) {
+	#bullmer-header-text {
+		left: 3%;
+		right: 3%;
+	}
+}
+/* 超大屏幕（屏幕宽度大于1200px） */
+@media (min-width: 1200px) {
+	#bullmer-header-text {
+		font-size: 3rem; /* 固定最大字体大小 */
+	}
+}
