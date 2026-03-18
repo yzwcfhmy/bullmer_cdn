@@ -1167,8 +1167,8 @@ function echarts_5(schedule) {
                 yAxis: [{
                     type: 'value',
                     min: 0,
-                    // 三元运算符，段速是否大于10？大于的话那就等于好了  js大法好
-                    max: (leftSpeedArr[0] + 2),
+                    // 三元运算符，段速是否大于10？大于的话那就等于好了
+                    max: 10,
                     name: echarts_5_upto10speed,
                     axisLabel: {
                         //formatter: '{value} %'
@@ -1255,6 +1255,7 @@ function echarts_5(schedule) {
         myChart.resize();
     });
 }
+
 function zb1(schedule) {
     // 基于准备好的dom，初始化echarts实例
     var myChart = echarts.init(document.getElementById('zb1'));
