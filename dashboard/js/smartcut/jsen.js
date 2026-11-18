@@ -36,6 +36,15 @@ function getLength(str) {
 }
 // 执行ajax
 function sendRequest(options) {
+	// 所有 JSON 请求带上浏览器本地日期："当日"类查询按客户所在时区取数，不依赖服务器时区
+	if (options.data && options.contentType && options.contentType.indexOf('application/json') >= 0) {
+		try {
+			var _p = JSON.parse(options.data);
+			var _d = new Date(), _pad = function (n) { return (n < 10 ? '0' : '') + n; };
+			_p.clientDate = _d.getFullYear() + '-' + _pad(_d.getMonth() + 1) + '-' + _pad(_d.getDate());
+			options.data = JSON.stringify(_p);
+		} catch (e) {}
+	}
 	$.ajax({
 		url: options.url,
 		type:options.type,
