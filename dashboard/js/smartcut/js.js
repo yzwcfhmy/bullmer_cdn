@@ -47,18 +47,6 @@ function getCurrentMonthStartAndNow() {
 
     return [firstDay, nowFormatted];
 }
-// 计算长度
-function getLength(str) {
-	var str_length = 0;
-	var str_len = 0;
-	str_cut = new String();
-	str_len = str.length;
-	for (var i = 0; i < str_len; i++) {
-		a = str.charAt(i);
-		str_length++;
-	}
-	return str_length;
-}
 // 执行ajax
 function sendRequest(options) {
 	// 所有 JSON 请求带上浏览器本地日期："当日"类查询按客户所在时区取数，不依赖服务器时区
@@ -156,10 +144,6 @@ function fomatFloat(src,pos){
 	return Math.round(src*Math.pow(10, pos))/Math.pow(10, pos);
 }
 
-function Lidestroy(){
-	$wrap.liMarquee('destroy');
-}
-
 // 计算距离对应的圆圈
 function distanceCalcu(dis) {
 	if (dis >= 0 && dis < 10) {
@@ -186,7 +170,7 @@ function register_AutoFlush() {
 }
 
 function requestAll(){
-    console.log("请求一次数据");
+    console.log("Requesting data");
     // 左下角七日四大时间
 	echarts_1();
 	// 最新10次的速度
@@ -310,7 +294,6 @@ function requestAll(){
 						}
 					},
 					series: [{
-						name: 'Time Distribution',
 						type: 'bar',
 						data: [
 							{
@@ -474,7 +457,7 @@ function echarts_2() {
                 myChart.clear(); // 清空之前的所有内容，防止内存堆积。
 				myChart.setOption(option);
 			} else {
-				console.log("无数据");
+				console.log("No data");
 				myChart.setOption({
 					title: {
 						text: echarts_2_NoData,
@@ -573,7 +556,6 @@ function echarts_2() {
 						}
 					},
 					series: [{
-						name: 'Time Distribution',
 						type: 'bar',
 						data: [
 							{
@@ -1215,7 +1197,7 @@ function echarts_2() {
 
         const selectedSn = $("#device").find("option:selected").val();
         if (!selectedSn) {
-            console.warn("未选择设备");
+            console.warn("No device selected");
             return;
         }
 
@@ -1238,7 +1220,7 @@ function echarts_2() {
                 updatePerformanceData(response);
             },
             error: function () {
-                console.error("获取设备表现数据失败");
+                console.error("Failed to load performance data");
                 showErrorMessage();
             }
         });
@@ -1463,7 +1445,7 @@ function echarts_2() {
 						},
 						data: [{
 							value: v2,
-							name: '女消费',
+							name: '',
 							label: {
 								normal: {
 									formatter: fomatFloat(v2,0) + zb_min,
@@ -1475,7 +1457,7 @@ function echarts_2() {
 							}
 						}, {
 							value: v1,
-							name: '男消费',
+							name: '',
 							label: {
 								normal: {
 									formatter: function(params) {
@@ -1574,7 +1556,7 @@ function echarts_2() {
 						data: [{
 							// 此处是占有的数量,与下边的value形成对抗，所以要变成剩余的值
 							value: v3,
-							name: '男消费',
+							name: '',
 							label: {
 								normal: {
 									formatter: v1 + zb_min,
@@ -1587,7 +1569,7 @@ function echarts_2() {
 						}, {
 							// 此处是占有的数量
 							value: v3 - v1,
-							name: '女消费',
+							name: '',
 							label: {
 								normal: {
 									formatter: function(params) {
@@ -1679,7 +1661,7 @@ function echarts_2() {
 						},
 						data: [{
 							value: v2,
-							name: '女消费',
+							name: '',
 							label: {
 								normal: {
 									formatter: v2 + zb_meter,
@@ -1691,7 +1673,7 @@ function echarts_2() {
 							}
 						}, {
 							value: v3 - v2,
-							name: '男消费',
+							name: '',
 							label: {
 								normal: {
 									formatter: function(params) {
@@ -1810,7 +1792,7 @@ function echarts_2() {
 				});
 			},
 			error:function () {
-				console.log("左侧订单区域错误");
+				console.error("Order area request failed");
 			}
 		};
 		sendRequest(options);
@@ -1844,7 +1826,7 @@ function loadPatternUsageData() {
             updateTableData(response);
         },
         error: function () {
-            console.error("获取版图使用率数据失败");
+            console.error("Failed to load pattern usage data");
             showErrorMessage();
         }
     });
@@ -1885,7 +1867,7 @@ function updateTableData(data) {
 function updatePerformanceData(data) {
     // 安全判断：确保 data 是非空数组
     if (!Array.isArray(data) || data.length === 0) {
-        console.warn("⚠️ 性能数据为空，无法更新");
+        console.warn("Performance data is empty; skip update");
         $("#perf_OEE").text("--%");
         $("#perf_workTime").text("--min");
         $("#perf_cutTime").text("--min");
@@ -1931,7 +1913,7 @@ function showNoDataMessage() {
 
 	$('#ulBodyRank').append(
 		'<tr>' +
-		'<td colspan="4" style="text-align: center;">No Data in 30 Day</td>' +
+		'<td colspan="4" style="text-align: center;">' + tips_No30DayData + '</td>' +
 		'</tr>'
 	);
 }
@@ -1942,7 +1924,7 @@ function showNoDataMessage() {
 function showErrorMessage() {
 	$('#ulBodyRank').append(
 		'<tr>' +
-		'<td colspan="4" style="text-align: center; color: red;">ERROR</td>' +
+		'<td colspan="4" style="text-align: center; color: red;">' + (typeof echarts_2_Error !== "undefined" ? echarts_2_Error : "ERROR") + '</td>' +
 		'</tr>'
 	);
 }

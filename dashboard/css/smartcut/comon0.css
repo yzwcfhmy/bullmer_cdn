@@ -3,7 +3,7 @@
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box}
-*,body{padding:0px;	margin:0px;color: #222;font-family: "微软雅黑";}
+*,body{padding:0px;	margin:0px;color: #222;font-family: "Microsoft YaHei", "Segoe UI", Arial, sans-serif;}
 body{color:#666;font-size: 16px;}
 li{ list-style-type:none;}
 table{}
@@ -14,9 +14,13 @@ a.active,a:focus{ outline:none!important; text-decoration:none;}
 ol,ul,p,h1,h2,h3,h4,h5,h6{ padding:0; margin:0}
 a:hover{ color:#06c; text-decoration: none!important}
 
-#langCN{ position:absolute; left:30px; top:0; margin-top: 10px;}
-#langEN{ position:absolute; left:105px; top:0;margin-top: 10px;}
-#langDE{ position:absolute; left:180px; top:0;margin-top: 10px;}
+#langSelect{
+	position:absolute; left:330px; top:0; margin-top:10px;
+	width:150px; height:50px; text-align:center; font-size:20px; color:white;
+	background-color: rgba(0,47,94,1); border:1px solid #caccc5; border-radius:5px;
+	transition: background-color .5s ease;
+}
+#langSelect:hover{ background-color: rgba(0,90,195,.8); cursor:pointer; }
 
 #device{
 	transition: background-color 0.5s ease;
@@ -65,7 +69,7 @@ a:hover{ color:#06c; text-decoration: none!important}
 .loadbox{position:absolute; width:160px;height:150px; color: rgba(255,255,255,.6); left:50%; top:50%; margin-top:-100px; margin-left:-75px;}
 .loadbox img{ margin:10px auto; display:block; width:40px;}
  
-.head{ height:105px; background: url('../images/smartcut/head_bg.png') no-repeat center center; position: relative}
+.head{ height:105px; background: url(../../images/smartcut/head_bg.png) no-repeat center center; position: relative}
 .head h1{ color:#fff; text-align: center; font-size:42px; line-height:90px;;}
 .head h1 img{ width:1.5rem; display: inline-block; vertical-align: middle; margin-right: .2rem}
 .weather{ position:absolute; right:30px; top:0; line-height: 70px;}
