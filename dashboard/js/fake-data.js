@@ -1,5 +1,12 @@
+// 用本地时间拼接 yyyy-MM-dd HH:mm:ss，避免 toISOString() 按 UTC 换算造成跨时区错位
+function formatLocalDateTimeStr(date) {
+    const pad = (n) => String(n).padStart(2, '0');
+    return date.getFullYear() + '-' + pad(date.getMonth() + 1) + '-' + pad(date.getDate())
+        + ' ' + pad(date.getHours()) + ':' + pad(date.getMinutes()) + ':' + pad(date.getSeconds());
+}
+
 const now = new Date();
-const defaultTimeStr = now.toISOString().slice(0, 19).replace('T', ' ');
+const defaultTimeStr = formatLocalDateTimeStr(now);
 
 new Vue({
     el: '#app',
@@ -283,7 +290,7 @@ new Vue({
         addMinutes(dateTimeStr, minutes) {
             const dt = new Date(dateTimeStr.replace(' ', 'T'));
             dt.setMinutes(dt.getMinutes() + minutes);
-            return dt.toISOString().slice(0, 19).replace('T', ' ');
+            return formatLocalDateTimeStr(dt);
         },
 
         copyToClipboard() {

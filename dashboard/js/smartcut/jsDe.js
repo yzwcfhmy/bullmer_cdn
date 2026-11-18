@@ -48,6 +48,17 @@ function sendRequest(options) {
 	});
 }
 
+// 时段产量：smallTime/bigTime 是后端按 UTC 序列化的 Date（bigTime 为当天 00:00）。
+// 用两者 UTC 小时之差还原记录原本的钟点，避免浏览器时区导致时段错位。
+function parseYieldHour(row) {
+	var t = row.smallTime, d = row.bigTime;
+	if (typeof t === 'string' && /^\d{1,2}:\d{2}/.test(t)) return parseInt(t, 10);
+	var ut = new Date(t).getUTCHours(), ud = new Date(d).getUTCHours();
+	if (!isNaN(ut) && !isNaN(ud)) return (ut - ud + 24) % 24;
+	var h = new Date(t).getHours();
+	return isNaN(h) ? 0 : h;
+}
+
 // 时间段选择器
 function chooseTime(time){
 	switch(time)
@@ -845,11 +856,11 @@ $( Echart = function() {
 				}
 
 				for (let i = 0; i < data.length; i++) {
-					var myDate = new Date(data[i].smallTime);
-					// console.log("Timer is == > " + myDate.getHours());
-					timeArr[chooseTime(myDate.getHours())]++;
-					piceArr[chooseTime(myDate.getHours())] += data[i].piece;
-					PiceChuYTimeArr[chooseTime(myDate.getHours())] += fomatFloat((data[i].piece / timeArr[chooseTime(myDate.getHours())]),2);
+					var hour = parseYieldHour(data[i]);
+					// console.log("Timer is == > " + hour);
+					timeArr[chooseTime(hour)]++;
+					piceArr[chooseTime(hour)] += data[i].piece;
+					PiceChuYTimeArr[chooseTime(hour)] += fomatFloat((data[i].piece / timeArr[chooseTime(hour)]),2);
 				}
 
 				// console.log(timeArr);
